@@ -13,10 +13,87 @@ class HandleRequest{
 
         $url = "http://api.booli.se/listings/?q=". $areaOfSearch ."&" . http_build_query($auth);
         $returnedData = $this->gatherInformation($url);
-        $decodedReturned = json_decode($returnedData);
-        $decodedReturned;
+        $this->saveJsonData($returnedData);
+        
+        $scbKoder = json_decode($this->gatherInformation("http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BO/BO0104/BO0104T01"));
+        
+        $scbData = $this->gatherInformationPost("http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BO/BO0104/BO0104T01");
+        $scbData = json_decode($scbData);
     }
     
+    private function saveJsonData($data){
+        $jsonListings = fopen("cache/listings.txt", "w");
+        fwrite($jsonListings, $data);
+        fclose($jsonListings);
+    }
+    
+    private function gatherInformationPost($url) {
+                                                                  
+        $data_string = '{
+                    "query": [
+                      {
+                        "code": "Region",
+                        "selection": {
+                          "filter": "vs:RegionKommun07",
+                          "values": [
+                            "0163"
+                          ]
+                        }
+                      },
+                      {
+                        "code": "Hustyp",
+                        "selection": {
+                          "filter": "item",
+                          "values": [
+                            "SMÅHUS",
+                            "FLERBOST",
+                            "ÖVRHUS",
+                            "SPEC"
+                          ]
+                        }
+                      },
+                      {
+                        "code": "Tid",
+                        "selection": {
+                          "filter": "item",
+                          "values": [
+                            "2014"
+                          ]
+                        }
+                      }
+                    ],
+                    "response": {
+                      "format": "json-stat"
+                    }
+                  }';
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+            'Content-Type: application/json',                                                                                
+            'Content-Length: ' . strlen($data_string))                                                                       
+        );         
+        
+        try
+        {
+            $data = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+            if($httpCode != 200)
+            {
+                throw new Exception("Felkod när hämtningen av data skedde");
+            }
+            
+        } catch (Exception $ex) {
+            curl_close($ch);
+            throw new Exception("not implemented");
+        }
+        return $data;
+    }
+
     private function gatherInformation($url) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -24,7 +101,12 @@ class HandleRequest{
         try
         {
             $data = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
+            if($httpCode != 200)
+            {
+                throw new Exception("Felkod när hämtningen av data skedde");
+            }
             
         } catch (Exception $ex) {
             curl_close($ch);
@@ -54,5 +136,5 @@ class HandleRequest{
             }
             return $dataArray;
         }
-    }        
+    }
 }

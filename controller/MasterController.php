@@ -10,7 +10,11 @@ class MasterController {
     }
     
     public function StartApplication() {
-        $this->handleRequestModel->StartGatherInfo("stockholm");
+        if($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            $this->handleRequestModel->StartGatherInfo($_POST["searchField"]);
+        }
+        
         $this->renderOutput->renderMap();
     }
 }

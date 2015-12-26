@@ -15,8 +15,11 @@ class RenderOutput {
                   </head>
                   <body>
                     <div id="searchFieldDiv">
-                        <label for="serchField">Ange område:</label>
-                        <input type="text" id="serchField">
+                        <form method="post">
+                            <label for="searchField">Sök på ett område:</label>
+                            <input type="text" id="searchField" name="searchField">
+                            <input type="submit" value="Sök">
+                        </form>
                     </div>
                     <div id="map"></div>
                     <script src="scripts/GoogleMaps.js" ></script>
