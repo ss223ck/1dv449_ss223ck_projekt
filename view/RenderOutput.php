@@ -4,7 +4,7 @@ namespace view;
 
 class RenderOutput {
     
-    public function renderMap() {
+    public function renderMap($dropDowns) {
         echo '<!DOCTYPE html>
                 <html>
                   <head>
@@ -15,11 +15,9 @@ class RenderOutput {
                   </head>
                   <body>
                     <div id="searchFieldDiv">
-                        <form method="post">
                             <label for="searchField">Sök på ett område:</label>
-                            <input type="text" id="searchField" name="searchField">
-                            <input type="submit" value="Sök">
-                        </form>
+                            ' . $dropDowns . '
+                            <input id="submitbutton" type="submit" value="Sök">
                     </div>
                     <div id="map"></div>
                     <script src="scripts/GoogleMaps.js" ></script>
