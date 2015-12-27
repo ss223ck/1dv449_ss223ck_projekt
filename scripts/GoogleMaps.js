@@ -21,20 +21,23 @@ function initMap() {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
     
-    document.getElementById("submitbutton").addEventListener("click", getBooliValues);
+    document.getElementById("counties").addEventListener("change", getBooliValues);
 };
 
 function getBooliValues() {
-    var counties = document.getElementById("counties").value;
+    var counties = "county=" + document.getElementById("counties").value;
     
     var xmlhttp = new XMLHttpRequest();
     var url = "index.php";
+    xmlhttp.open("POST", url, true);
+    
+    xmlhttp.setRequestHeader("Content-type", "appliction/x-www-form.urlencoded");
     
     xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var jsonReturn = xmlhttp.responseText;
         }
     };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+    
+    xmlhttp.send(counties);
 }

@@ -49,6 +49,10 @@ class HandleRequest{
         fclose($communeListings);
     }
     
+    public function getSpecificCommunes() {
+        
+    }
+    
     public function getCommuneCodes() {
         $lastUpdateDate = "";
         $communeListings = fopen("cache/communeListings.txt", "r");

@@ -15,3 +15,14 @@ $formatOutput = new \view\FormatOutput();
 
 $controller = new \contoller\MasterController($handleRequest, $renderView, $formatOutput);
 $controller->StartApplication();
+
+/*if()
+{
+    
+}
+else
+{
+    $controller = new \contoller\MasterController($handleRequest, $renderView, $formatOutput);
+    $controller->StartApplication();
+}
+*/
