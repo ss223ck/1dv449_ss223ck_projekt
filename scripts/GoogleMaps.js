@@ -25,19 +25,16 @@ function initMap() {
 };
 
 function getBooliValues() {
-    var counties = "county=" + document.getElementById("counties").value;
-    
-    var xmlhttp = new XMLHttpRequest();
-    var url = "index.php";
-    xmlhttp.open("POST", url, true);
-    
-    xmlhttp.setRequestHeader("Content-type", "appliction/x-www-form.urlencoded");
-    
-    xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var jsonReturn = xmlhttp.responseText;
+    var counties = document.getElementById("counties").value;
+    var result;
+    $.ajax({
+        type: "POST",
+        url: "index.php",
+        data: {
+            county: counties
+        },
+        success: function( data ) {
+          result = data;
         }
-    };
-    
-    xmlhttp.send(counties);
+    });
 }

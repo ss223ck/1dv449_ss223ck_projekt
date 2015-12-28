@@ -16,7 +16,7 @@ $formatOutput = new \view\FormatOutput();
 $controller = new \contoller\MasterController($handleRequest, $renderView, $formatOutput);
 $controller->StartApplication();
 
-/*if()
+if($_POST["county"])
 {
     
 }
@@ -25,4 +25,3 @@ else
     $controller = new \contoller\MasterController($handleRequest, $renderView, $formatOutput);
     $controller->StartApplication();
 }
-*/

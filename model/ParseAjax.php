@@ -2,10 +2,5 @@
 
 namespace model;
 
-class ParseAjax{
-    
-    public function startParse() {
-        
-    }
-}
+echo "response";
 ?>

@@ -17,7 +17,7 @@ class HandleRequest{
     }
     
     private function matchCodeToCommune($code) {
-        $communesAndCodes = $this->getCommuneCodes();
+        $communesAndCodes = $this->getCombinedCommuneNameAndCode();
         return array_search($code, $communesAndCodes);
     }
     private function createURLForBooli($areaOfSearch) {
@@ -49,14 +49,20 @@ class HandleRequest{
         fclose($communeListings);
     }
     
-    public function getSpecificCommunes() {
+    public function getSpecificCommunes($county) {
+        $communesAndCounties = $this->getCombinedCommuneNameAndCode();
+        $endOfCounty = false;
         
+        $indexOfCounty = array_search($county, $communesAndCounties);
+        
+        while(!$endOfCounty) {
+            
+        }
     }
     
     public function getCommuneCodes() {
         $lastUpdateDate = "";
         $communeListings = fopen("cache/communeListings.txt", "r");
-        $formatedArrayForCommunes;
         
         if(filesize("cache/communeListings.txt") > 0)
         {
@@ -72,13 +78,21 @@ class HandleRequest{
         fclose($communeListings);
         $communesAndNames = unserialize($array[0]);
         
+        return $communesAndNames;
+    }
+    
+    public function getCombinedCommuneNameAndCode() {
+        $formatedArrayForCommunes;
+        
+        $communesAndNames = $this->getCommuneCodes();
+        
         for($i = 0; $i < count($communesAndNames["values"]); $i++) {
             $formatedArrayForCommunes[$communesAndNames["valueTexts"][$i]] = $communesAndNames["values"][$i];
         }
-        
         return $formatedArrayForCommunes;
     }
-    
+
+
     private function gatherInformationPost($url, $areaOfSearch) {
                                                                   
         $data_string = '{

@@ -11,7 +11,11 @@ class MasterController {
     }
     
     public function StartApplication() {
-        if($_SERVER['REQUEST_METHOD'] === 'POST')
+        if(isset($_POST["county"]))
+        {
+            
+        }
+        else if(isset($_POST["commune"]))
         {
             $this->handleRequestModel->StartGatherInfo($_POST["commune"]);
         }
