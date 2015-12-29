@@ -29,4 +29,9 @@ class RenderOutput {
                 </html>
             ';
     }
+    
+    public function sendAjaxResponse($values) {
+        $values = json_encode($values);
+        echo $values;
+    }
 }

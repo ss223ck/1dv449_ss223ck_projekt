@@ -1,1 +1,0 @@
-{"totalCount":0,"count":0,"listings":[],"limit":35,"offset":0,"searchParams":[],"message":"AREA_NOT_FOUND"}

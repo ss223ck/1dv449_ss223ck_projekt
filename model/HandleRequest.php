@@ -5,15 +5,13 @@ namespace model;
 class HandleRequest{
     
     public function startGatherInfo($areaOfSearch){
+        $housingsAndSCBData;
         $communeToSearch = $this->matchCodeToCommune($areaOfSearch);
         $booliUrl = $this->createURLForBooli($communeToSearch);
-        $returnedData = $this->gatherInformation($booliUrl);
-        $this->saveJsonData($returnedData);
+        $housingsAndSCBData[] = json_decode($this->gatherInformation($booliUrl));
         
-        $communeCodesAndNames = $this->getCommuneCodes();
-        
-        $scbData = $this->gatherInformationPost("http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BO/BO0104/BO0104T01");
-        $scbData = json_decode($scbData);
+        $housingsAndSCBData[] = json_decode($this->gatherInformationPost("http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BO/BO0104/BO0104T01", $areaOfSearch));
+        return $housingsAndSCBData;
     }
     
     private function matchCodeToCommune($code) {
@@ -28,11 +26,6 @@ class HandleRequest{
         $auth['hash'] = sha1($auth['callerId'] . $auth['time'] . "iXEOWZpoW8E7MWaAsmJ4FPCaWPBtONfFzQjClJZo" . $auth['unique']);
 
         return "http://api.booli.se/listings/?q=". $areaOfSearch ."&" . http_build_query($auth);
-    }
-    private function saveJsonData($data){
-        $jsonListings = fopen("cache/listings.txt", "w");
-        fwrite($jsonListings, $data);
-        fclose($jsonListings);
     }
     
     private function saveCommuneCodes() {
@@ -50,14 +43,24 @@ class HandleRequest{
     }
     
     public function getSpecificCommunes($county) {
-        $communesAndCounties = $this->getCombinedCommuneNameAndCode();
+        $communesAndCounties = $this->getCommuneCodes();
         $endOfCounty = false;
+        $arrayOfCommunes;
         
-        $indexOfCounty = array_search($county, $communesAndCounties);
+        $indexOfCounty = array_search($county, $communesAndCounties["values"]);
         
         while(!$endOfCounty) {
-            
+            $indexOfCounty++;
+            if(strlen($communesAndCounties["values"][$indexOfCounty]) != 2)
+            {
+                $arrayOfCommunes[$communesAndCounties["valueTexts"][$indexOfCounty]] = $communesAndCounties["values"][$indexOfCounty];
+            }
+            else
+            {
+                $endOfCounty = true;
+            }
         }
+        return $arrayOfCommunes;
     }
     
     public function getCommuneCodes() {
@@ -87,7 +90,9 @@ class HandleRequest{
         $communesAndNames = $this->getCommuneCodes();
         
         for($i = 0; $i < count($communesAndNames["values"]); $i++) {
+            
             $formatedArrayForCommunes[$communesAndNames["valueTexts"][$i]] = $communesAndNames["values"][$i];
+            
         }
         return $formatedArrayForCommunes;
     }

@@ -16,10 +16,6 @@ class FormatOutput {
             {
                 $formatedDropDownsCounties .= '<option value="'. $communeCode .'">' . $communeName . '</option>';
             }
-            else if($communeCode !== "01")
-            {
-                $formatedDropDownsCommunes .= '<option value="'. $communeCode .'">' . $communeName . '</option>';
-            }
         }
         
         $FormatedDropDowns = '
@@ -27,7 +23,7 @@ class FormatOutput {
                 ' . $formatedDropDownsCounties . '
             </select>
             <select id="communes" name="commune">
-                ' . $formatedDropDownsCommunes . '
+                
             </select>
             ';
         return $FormatedDropDowns;
