@@ -14,10 +14,19 @@ class RenderOutput {
                     
                   </head>
                   <body>
-                    <div id="searchFieldDiv">
-                            <label for="searchField">Sök på ett område:</label>
-                            ' . $dropDowns . '
-                            <input id="submitbutton" type="submit" value="Sök">
+                    <div id="sidePanelWrapepr">
+                        <div id="searchFieldDiv" class="innerSidePanelWrappers">
+                                <label for="searchField">Sök på ett område:</label>
+                                ' . $dropDowns . '
+                                <input id="submitbutton" type="submit" value="Sök">
+                        </div>
+                        <div class="innerSidePanelWrappers">
+                            <table id="tableForInformationAboutHousing">
+
+                            </table>
+                        </div>
+                        <div id="errorDisplayWrapper">
+                        </div>
                     </div>
                     <div id="map"></div>
                     <script src="scripts/jquery-2.1.4.min.js" ></script>

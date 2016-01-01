@@ -1,6 +1,51 @@
 html, body { 
-    height: 100%; margin: 0; padding: 0; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
+    background-color: rgb(202,195,185);
 }
 #map { 
-    height: 97%; 
+    height: 80%; 
+    width: 65%;
+    margin-right: 5%;
+    float: right;
+    margin-top: 5%;
+}
+
+
+#sidePanelWrapepr {
+    max-width: 25%;
+    float:left;
+    margin-left:20px;
+    margin-top:30px;
+}
+#tableForInformationAboutHousing{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+th, td{
+    border:2px solid #786F60;
+    padding:5px;
+}
+
+tbody tr:nth-child(odd) {
+  background: #8F836E;
+}
+
+.innerSidePanelWrappers{
+    padding:10px;
+    margin-top:10px;
+    border-top:1px solid #786F60;
+    padding-top:20px;
+}
+#communes {
+    width: 136px;
+}
+
+#searchfield label{
+    color: rgb(202, 196, 184);
+}
+.errorMessage {
+    color: red;
 }

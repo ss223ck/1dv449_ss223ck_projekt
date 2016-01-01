@@ -12,7 +12,7 @@ class FormatOutput {
         foreach($formatedCommunesAndCodes as $communeName => $communeCode)
         {
             //If the code is two numbers then it's a county
-            if(strlen($communeCode) === 2 && $communeCode !== "01")
+            if(strlen($communeCode) === 2 )
             {
                 $formatedDropDownsCounties .= '<option value="'. $communeCode .'">' . $communeName . '</option>';
             }

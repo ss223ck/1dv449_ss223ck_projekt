@@ -16,7 +16,9 @@ class HandleRequest{
     
     private function matchCodeToCommune($code) {
         $communesAndCodes = $this->getCombinedCommuneNameAndCode();
-        return array_search($code, $communesAndCodes);
+        $communeName = array_search($code, $communesAndCodes);
+        $communeName = str_replace(" ", "-", $communeName);
+        return $communeName;
     }
     private function createURLForBooli($areaOfSearch) {
         $auth = array();
@@ -155,12 +157,12 @@ class HandleRequest{
             curl_close($ch);
             if($httpCode != 200)
             {
-                throw new Exception("Felkod när hämtningen av data skedde");
+                $data = json_encode("Fel när hämtningen av data skedde från scb");
             }
             
         } catch (Exception $ex) {
             curl_close($ch);
-            throw new Exception("not implemented");
+            $data = json_encode($ex);
         }
         return $data;
     }
@@ -176,12 +178,12 @@ class HandleRequest{
             curl_close($ch);
             if($httpCode != 200)
             {
-                throw new \Exception("Felkod när hämtningen av data skedde");
+                $data = json_encode("Fel när hämtningen av data skedde från booli");
             }
             
         } catch (Exception $ex) {
             curl_close($ch);
-            throw new Exception("not implemented");
+            $data = json_encode($ex);
         }
         return $data;
     }
