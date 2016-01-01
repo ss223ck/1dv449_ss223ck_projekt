@@ -12,7 +12,10 @@ function initMap() {
     
     document.getElementById("counties").addEventListener("change", getSCBCommunes);
     document.getElementById("submitbutton").addEventListener("click", getBooliHousings);
+    
+    
 };
+
 
 function getSCBCommunes() {
     var counties = document.getElementById("counties").value;
@@ -28,7 +31,6 @@ function getSCBCommunes() {
             createCommuneOptions(result);
         }
     });
-    
 }
 
 function createCommuneOptions(result) {
@@ -85,6 +87,8 @@ function createErrorMessage(result) {
     }
 }
 function renderHousingData(data) {
+    var errorDiv = document.getElementById("errorDisplayWrapper");
+    errorDiv.innerHTML = "";
     for(var key in data[0]["listings"]) 
     {
         renderHousingObjects(data[0]["listings"][key]);

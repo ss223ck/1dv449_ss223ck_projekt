@@ -16,7 +16,7 @@ class RenderOutput {
                   <body>
                     <div id="sidePanelWrapepr">
                         <div id="searchFieldDiv" class="innerSidePanelWrappers">
-                                <label for="searchField">Sök på ett område:</label>
+                                <label id="searchLabel" for="searchField">Sök på ett område:</label>
                                 ' . $dropDowns . '
                                 <input id="submitbutton" type="submit" value="Sök">
                         </div>

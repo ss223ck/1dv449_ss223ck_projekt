@@ -19,10 +19,10 @@ class FormatOutput {
         }
         
         $FormatedDropDowns = '
-            <select id="counties">
+            <select id="counties" class="dropDowns">
                 ' . $formatedDropDownsCounties . '
             </select>
-            <select id="communes" name="commune">
+            <select id="communes" name="commune" class="dropDowns">
                 
             </select>
             ';

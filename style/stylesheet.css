@@ -49,3 +49,27 @@ tbody tr:nth-child(odd) {
 .errorMessage {
     color: red;
 }
+.dropDowns{
+    border-radius:5px;
+    border:0px;
+    padding:3px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+}
+#submitbutton {
+    border-radius:5px;
+    border:0px;
+    padding:5px;
+    width:50px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 17px;
+    margin-top: 10px;
+}
+#submitbutton:active {
+    background-color:#786F60;
+}
+#searchLabel {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    margin-right: 5px;
+}
