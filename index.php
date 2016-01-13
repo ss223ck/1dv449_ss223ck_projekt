@@ -13,5 +13,5 @@ $handleRequest = new \model\HandleRequest();
 $renderView = new \view\RenderOutput();
 $formatOutput = new \view\FormatOutput();
 
-$controller = new \contoller\MasterController($handleRequest, $renderView, $formatOutput);
+$controller = new \controller\MasterController($handleRequest, $renderView, $formatOutput);
 $controller->StartApplication();

@@ -3,7 +3,7 @@
 namespace model;
 
 class HandleRequest{
-    
+    //starts to gather the information for the specific commune
     public function startGatherInfo($areaOfSearch){
         $housingsAndSCBData;
         $communeToSearch = $this->matchCodeToCommune($areaOfSearch);
@@ -30,6 +30,7 @@ class HandleRequest{
         return "http://api.booli.se/listings/?q=". $areaOfSearch ."&" . http_build_query($auth);
     }
     
+    //Saves the diffrent communes and commune codes
     private function saveCommuneCodes() {
         $codesAndCommunes;
         
@@ -44,6 +45,7 @@ class HandleRequest{
         fclose($communeListings);
     }
     
+    //Gets the specific communes within the county
     public function getSpecificCommunes($county) {
         $communesAndCounties = $this->getCommuneCodes();
         $endOfCounty = false;
@@ -65,6 +67,7 @@ class HandleRequest{
         return $arrayOfCommunes;
     }
     
+    //Returns all the commune names and commune codes
     public function getCommuneCodes() {
         $lastUpdateDate = "";
         $communeListings = fopen("cache/communeListings.txt", "r");
@@ -85,7 +88,7 @@ class HandleRequest{
         
         return $communesAndNames;
     }
-    
+    //Combines the commune names with their codes
     public function getCombinedCommuneNameAndCode() {
         $formatedArrayForCommunes;
         
@@ -99,7 +102,7 @@ class HandleRequest{
         return $formatedArrayForCommunes;
     }
 
-
+    // Gather the data from SCB. This should be made a more generall function
     private function gatherInformationPost($url, $areaOfSearch) {
                                                                   
         $data_string = '{
@@ -167,6 +170,7 @@ class HandleRequest{
         return $data;
     }
 
+    //Gathers information from  booli
     private function gatherInformation($url) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

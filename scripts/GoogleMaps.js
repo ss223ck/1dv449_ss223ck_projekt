@@ -10,27 +10,47 @@ function initMap() {
       zoom: 8
     });
     
-    document.getElementById("counties").addEventListener("change", getSCBCommunes);
-    document.getElementById("submitbutton").addEventListener("click", getBooliHousings);
-    
-    
 };
 
-
+function startScripts () {
+    document.getElementById("counties").addEventListener("change", getSCBCommunes);
+    document.getElementById("submitbutton").addEventListener("click", getBooliHousings);
+}
 function getSCBCommunes() {
-    var counties = document.getElementById("counties").value;
-    var result;
-    $.ajax({
-        type: "POST",
-        url: "index.php",
-        data: {
-            county: counties
-        },
-        success: function( data ) {
-            result = JSON.parse(data);
-            createCommuneOptions(result);
+    if (typeof google === 'object' && typeof google.maps === 'object') {
+        var counties = document.getElementById("counties").value;
+        var result;
+        if(localStorage[counties] == null)
+        {
+            $.ajax({
+                type: "POST",
+                url: "index.php",
+                data: {
+                    county: counties
+                },
+                success: function( data ) {
+                    result = JSON.parse(data);
+                    createCommuneOptions(result);
+                    localStorage[counties] = data;
+                },
+                error: function() {
+                    emptyErrorResults();
+                    createErrorMessage("Fel när data skulle hämtas från servern");
+                    var dropDownCommunes = document.getElementById("communes");
+                    dropDownCommunes.innerHTML = "";
+                }
+            });
         }
-    });
+        else
+        {
+            createCommuneOptions(JSON.parse(localStorage[counties]));
+        }
+        
+    }
+    else
+    {
+        createErrorMessage("Google maps laddades inte in korrekt, försök ladda om sidan eller testa igen senare.");
+    }
 }
 
 function createCommuneOptions(result) {
@@ -49,31 +69,55 @@ function createCommuneOptions(result) {
 }
 
 function getBooliHousings() {
-    var communes = document.getElementById("communes").value;
-    
-    var result;
-    $.ajax({
-        type: "POST",
-        url: "index.php",
-        data: {
-            commune: communes
-        },
-        success: function( data ) {
-            result = JSON.parse(data);
-            if($.type(result[0]) === 'string' || $.type(result[1]) === 'string')
-            {
-                displayErrorMessage(result);
+    if (typeof google === 'object' && typeof google.maps === 'object') {
+        var communes = document.getElementById("communes").value;
+
+        var result;
+        $.ajax({
+            type: "POST",
+            url: "index.php",
+            data: {
+                commune: communes
+            },
+            success: function( data ) {
+                result = JSON.parse(data);
+                if($.type(result[0]) === 'string' || $.type(result[1]) === 'string')
+                {
+                    emptyErrorResults();
+                    displayErrorMessage(result);
+                }
+                else
+                {
+                    renderHousingData(result);
+                    localStorage[communes] = JSON.stringify(result[1]);
+                }
+                
+            },
+            error: function() {
+                emptyErrorResults();
+                createErrorMessage("Fel när data skulle hämtas från servern");
+                var table = document.getElementById("tableForInformationAboutHousing");
+                table.innerHTML = "";
+                if(localStorage[communes] != null)
+                {
+                    var storedHousingData = JSON.parse(localStorage[communes]);
+                    renderScbInformation(storedHousingData["dataset"])
+                }
             }
-            else
-            {
-                renderHousingData(result);
-            }
-        }
-    });
+        });
+    }
+    else
+    {
+        createErrorMessage("Google maps laddades inte in korrekt, försök ladda om sidan eller testa igen senare.");
+    }
 }
 function displayErrorMessage(results) {
     createErrorMessage(results[0]);
     createErrorMessage(results[1]);
+}
+function emptyErrorResults() {
+    var errorResultDiv = document.getElementById("errorDisplayWrapper");
+    errorResultDiv.innerHTML = "";
 }
 function createErrorMessage(result) {
     if($.type(result) === 'string')
@@ -172,9 +216,11 @@ function renderHousingObjects(dataBooli) {
     var contentString = '<div id="content">'+
         '<div id="siteNotice">'+
         '</div>'+
+        '<div id="heading">' +
         '<h1 id="firstHeading" class="firstHeading">'+ dataBooli["location"]["address"]["streetAddress"] +'</h1>'+
+        '</div>' +
         '<div id="bodyContent">'+
-        '<p>' + dataBooli["objectType"] + '</p>'+
+        '<p> Typ av boende: ' + dataBooli["objectType"] + '</p>'+
         '<p>Antal rum: ' + dataBooli["rooms"] + '</p>' + 
         '<p>Boarea: ' + dataBooli["livingArea"] + ' kvadratmeter</p>' + 
         '<p>Pris i kr: ' + dataBooli["listPrice"] + '</p>' + 
@@ -195,3 +241,4 @@ function renderHousingObjects(dataBooli) {
         marker.setMap(null);
     });
 }
+window.onLoad = startScripts();
