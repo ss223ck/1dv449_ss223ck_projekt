@@ -18,7 +18,7 @@ Jag har minifierat javascriptfilerna och cssfilerna. Detta för att spara bandbr
 Applikationen hanterar ingen känslig data och har därför inte stort behov av säkerhet. Code injections går inte att göra på sidan eftersom användaren inte kan posta någon till servern som ska sparas. CSRF attack går inte att göra eftersom användaren inte loggar in på applikationen. Applikationen använder ingen databas därför går det inte att göra sql-inject. Datan kan skickas okrypterat mellan klienten och servern eftersom inte känslig data behandlas.
 
 ## Offline first
-Jag har valt att spara information från SCB med komuner och län på serverns cache och sparat kommuner för län som användaren har sökt på i deras klient i localstorage. Serverns cache uppdaterar jag en gång om dagen. Det kanske är onödigt ofta eftersom kommuner och deras koder inte ändras speciellt ofta. Jag sparar även kommuners bostadsdata på localstorage. Så om användaren är offline men tidigare hämtat denna statistik presenteras den igen. 
+Jag har valt att spara information från SCB med kommuner och län på serverns cache och sparat kommuner för län som användaren har sökt på i deras klient i localstorage. Serverns cache uppdaterar jag en gång om dagen. Det kanske är onödigt ofta eftersom kommuner och deras koder inte ändras speciellt ofta. Jag sparar även kommuners bostadsdata på localstorage. Så om användaren är offline men tidigare hämtat denna statistik presenteras den igen. 
 
 ## Risker med applikationen
 ### Tekniska
