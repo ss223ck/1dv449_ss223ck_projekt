@@ -20,11 +20,11 @@ Slutar google maps att fungera så är applikationen i princip obrukbar. Jag har
 Booli:s api bör också fungera för att applikationen ska vara intressant. Jag funderade på om jag skulle spara informationen av booli:s api i localstorage. Även om informationen som anges inte direkt är den senaste så skulle den fortfarande kunna vara av intresse eftersom bostäder ligger ute längre än vad booli:s api förmodas vara nedstängt. 
 
 ### Etiskt
-Applikationen är väldigt lik boolis egna applikation. Jag har lagt till lite information som gör den lite annourlunda. 
+Applikationen är väldigt lik booli:s egna applikation. Jag har lagt till lite information i applikationen som gör den annourlunda från booli:s vanliga applikation. 
 
 ### Egna reflektioner
 Skulle jag haft mer tid skulle jag lagt till mer information om kommunen man söker bostäder i. Jag skulle även gett användaren möjlighet att välja vilken form av information applikationen ska publicera för användaren. Skulle jag implementerat dessa funktioner skulle applikationen verka mycket bättre. Jag tycker grunden jag har lagt är bra och har potential att utökas. 
-Problem
+###Problem
 Jag har haft svårt för hur jag ska använda api:erna. Dokumentationen från SCB var svår att hitta och svår att förstå. När man förstod hur man skulle göra blev det api:et enkelt att använda. Jag har lärt mig att ju mer invecklat ett api är desto viktigare är det med en bra dokumentation. 
 Jag hade problem i början med ajax-anrop till servern. Jag först använde jag inte j-query för att anropa servern. När jag började använda j-query blev det mycket lättare. Jag har inte så stor vana av j-query och det var intressant att lära mig mer om det. J-query underlättar verkligen i utvecklingen av javascript och jag förstår nu varför man väljer att utveckla biliotek. 
 Jag var osäker på hur och vilken information jag skulle lagra i cache. Jag hade svårt att veta vilken som skulle passa bäst på servern och vilken som skulle passa bäst på klienten. Jag skulle möjlightvis kunna lagra booli-objekten på servern. Det skulle spara mycket anrop till deras api. Samtidigt är det svårt att veta hur länge man ska lagra det i cache:n, dom skriver explicit i deras vision att booli publicerar dom senaste objekten mycket snabbare än deras konkurrenter. 
