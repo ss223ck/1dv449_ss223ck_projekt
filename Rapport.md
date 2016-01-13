@@ -1,19 +1,28 @@
 # Inledning
 
 Jag har valt att göra en mashup-applikation som använder tre olika api:er. Jag använder google maps för att få en karta i min applikation. I kartan placerade jag information från boolis api. Boolis api ger information om bostäder som är till salu. Sista api:et som jag använde var SCB. Av scb tog jag information om län och kommuner för att presentera ett lätt sätt att söka på dessa. Av scb tog jag även statistik om olika typer av bostäder för att presenteras för varje kommun användaren sökt på. 
-Optimering
+##Schema
+[Sekvensdiagram](https://github.com/ss223ck/1dv449_ss223ck_projekt/blob/master/Booli.png)
+[Classdiagram](https://github.com/ss223ck/1dv449_ss223ck_projekt/blob/master/Class-diagram.png)
+
+## Optimering
 Jag har minifierat javascriptfilerna och cssfilerna. Detta för att spara utrymme. Jag använder bara en javascriptfil som jag skrivit själv. Detta för att bara behöva ladda in javascriptresursen en gång. 
-Säkerhet
+
+## Säkerhet
 Applikationen hanterar ingen känslig data och har därför inte stort behov av säkerhet. Code injections går inte att göra på sidan eftersom användaren inte kan posta någon till servern som ska sparas. CSRF attack går inte att göra eftersom användaren inte loggar in på applikationen. Applikationen använder ingen databas därför går det inte att göra sql-inject. Datan kan skickas okrypterat mellan klienten och servern eftersom inte känslig data behandlas.
-Offline first
+
+## Offline first
 Jag har valt att spara information från SCB med komuner och län på serverns cache och sparat kommuner för län som användaren har sökt på i deras klient i localstorage. Serverns cache uppdaterar jag en gång om dagen. Det kanske är onödigt ofta eftersom kommuner och deras koder inte ändras speciellt ofta. Jag sparar även kommuners bostadsdata på localstorage. Så om användaren är offline men tidigare hämtat denna statistik presenteras den igen. 
-Risker med applikationen
-Tekniska
+
+## Risker med applikationen
+### Tekniska
 Slutar google maps att fungera så är applikationen i princip obrukbar. Jag har ännu inte hittat en lösning till detta problem. Jag skulle vilja ha någon form av cache av google maps. Dock så tror jag det skulle ta mycket utrymme. 
 Booli:s api bör också fungera för att applikationen ska vara intressant. Jag funderade på om jag skulle spara informationen av booli:s api i localstorage. Även om informationen som anges inte direkt är den senaste så skulle den fortfarande kunna vara av intresse eftersom bostäder ligger ute längre än vad booli:s api förmodas vara nedstängt. 
-Etiskt
+
+### Etiskt
 Applikationen är väldigt lik boolis egna applikation. Jag har lagt till lite information som gör den lite annourlunda. 
-Egna reflektioner
+
+### Egna reflektioner
 Skulle jag haft mer tid skulle jag lagt till mer information om kommunen man söker bostäder i. Jag skulle även gett användaren möjlighet att välja vilken form av information applikationen ska publicera för användaren. Skulle jag implementerat dessa funktioner skulle applikationen verka mycket bättre. Jag tycker grunden jag har lagt är bra och har potential att utökas. 
 Problem
 Jag har haft svårt för hur jag ska använda api:erna. Dokumentationen från SCB var svår att hitta och svår att förstå. När man förstod hur man skulle göra blev det api:et enkelt att använda. Jag har lärt mig att ju mer invecklat ett api är desto viktigare är det med en bra dokumentation. 
