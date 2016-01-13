@@ -26,7 +26,7 @@ Slutar google maps att fungera så är applikationen i princip obrukbar. Jag har
 Booli:s api bör också fungera för att applikationen ska vara intressant. Jag funderade på om jag skulle spara informationen av booli:s api i localstorage. Även om informationen som anges inte direkt är den senaste så skulle den fortfarande kunna vara av intresse eftersom bostäder ligger ute längre än vad booli:s api förmodas vara nedstängt. 
 
 ### Etiskt
-Applikationen är väldigt lik booli:s egna applikation. Jag har lagt till lite information i applikationen som gör den annourlunda från booli:s vanliga applikation. 
+Applikationen innehåller ingen känslig information. All information som presenteras är publik och inte känslig. Applikationen är väldigt lik booli:s egna applikation. Jag har lagt till lite information i applikationen som gör den annourlunda från booli:s vanliga applikation. 
 
 ### Egna reflektioner
 Skulle jag haft mer tid skulle jag lagt till mer information om kommunen man söker bostäder i. Jag skulle även gett användaren möjlighet att välja vilken form av information applikationen ska publicera för användaren. Skulle jag implementerat dessa funktioner skulle applikationen verka mycket bättre. Jag tycker grunden jag har lagt är bra och har potential att utökas. 
