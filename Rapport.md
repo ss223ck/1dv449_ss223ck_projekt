@@ -6,6 +6,7 @@ Jag har valt att göra en mashup-applikation som använder tre olika api:er. Jag
 ##Schema
 [Sekvensdiagram](https://github.com/ss223ck/1dv449_ss223ck_projekt/blob/master/Booli.png)
 [Classdiagram](https://github.com/ss223ck/1dv449_ss223ck_projekt/blob/master/Class-diagram.png)
+Jag har använt mvc arkitektur när jag skrev applikationen.
 
 ## Optimering
 Jag har minifierat javascriptfilerna och cssfilerna. Detta för att spara utrymme. Jag använder bara en javascriptfil som jag skrivit själv. Detta för att bara behöva ladda in javascriptresursen en gång. 
