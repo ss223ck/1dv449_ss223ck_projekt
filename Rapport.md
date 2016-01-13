@@ -29,7 +29,7 @@ Booli:s api bör också fungera för att applikationen ska vara intressant. Jag 
 Applikationen innehåller ingen känslig information. All information som presenteras är publik och inte känslig. Applikationen är väldigt lik booli:s egna applikation. Jag har lagt till lite information i applikationen som gör den annourlunda från booli:s vanliga applikation. 
 
 ### Egna reflektioner
-Skulle jag haft mer tid skulle jag lagt till mer information om kommunen man söker bostäder i. Jag skulle även gett användaren möjlighet att välja vilken form av information applikationen ska publicera för användaren. Skulle jag implementerat dessa funktioner skulle applikationen verka mycket bättre. Jag tycker grunden jag har lagt är bra och har potential att utökas. 
+Skulle jag haft mer tid skulle jag lagt till mer information om kommunen man söker bostäder i. Jag skulle även gett användaren möjlighet att välja vilken form av information applikationen ska publicera för användaren. Dessa funktioner skulle öka applikationens användarvärde. Jag tycker grunden jag har lagt är bra och har potential att utökas. 
 
 Jag har haft svårt för hur jag ska använda api:erna. Dokumentationen från SCB var svår att hitta och svår att förstå. När man förstod hur man skulle göra blev det api:et enkelt att använda. Jag har lärt mig att ju mer invecklat ett api är desto viktigare är det med en bra dokumentation. 
 
