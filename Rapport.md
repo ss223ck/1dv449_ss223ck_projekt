@@ -4,9 +4,12 @@
 
 Jag har valt att göra en mashup-applikation som använder tre olika api:er. Jag använder google maps för att få en karta i min applikation. I kartan placerade jag information från boolis api. Boolis api ger information om bostäder som är till salu. Sista api:et som jag använde var SCB. Av scb tog jag information om län och kommuner för att presentera ett lätt sätt att söka på dessa. Av scb tog jag även statistik om olika typer av bostäder för att presenteras för varje kommun användaren sökt på. 
 ##Schema
-[Sekvensdiagram](https://github.com/ss223ck/1dv449_ss223ck_projekt/blob/master/Booli.png)
-[Classdiagram](https://github.com/ss223ck/1dv449_ss223ck_projekt/blob/master/Class-diagram.png)
 Jag har använt mvc arkitektur när jag skrev applikationen.
+
+[Sekvensdiagram](https://github.com/ss223ck/1dv449_ss223ck_projekt/blob/master/Booli.png)
+
+[Classdiagram](https://github.com/ss223ck/1dv449_ss223ck_projekt/blob/master/Class-diagram.png)
+
 
 ## Optimering
 Jag har minifierat javascriptfilerna och cssfilerna. Detta för att spara utrymme. Jag använder bara en javascriptfil som jag skrivit själv. Detta för att bara behöva ladda in javascriptresursen en gång. 
