@@ -12,7 +12,7 @@ Jag har använt mvc arkitektur när jag skrev applikationen.
 
 
 ## Optimering
-Jag har minifierat javascriptfilerna och cssfilerna. Detta för att spara utrymme. Jag använder bara en javascriptfil som jag skrivit själv. Detta för att bara behöva ladda in javascriptresursen en gång. 
+Jag har minifierat javascriptfilerna och cssfilerna. Detta för att spara bandbredd och göra uppladdningen snabbare. Jag använder bara en javascriptfil som jag skrivit själv. Detta för att bara behöva ladda in javascriptresursen en gång. 
 
 ## Säkerhet
 Applikationen hanterar ingen känslig data och har därför inte stort behov av säkerhet. Code injections går inte att göra på sidan eftersom användaren inte kan posta någon till servern som ska sparas. CSRF attack går inte att göra eftersom användaren inte loggar in på applikationen. Applikationen använder ingen databas därför går det inte att göra sql-inject. Datan kan skickas okrypterat mellan klienten och servern eftersom inte känslig data behandlas.
