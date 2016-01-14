@@ -6,7 +6,7 @@ require_once("View/RenderOutput.php");
 require_once("View/FormatOutput.php");
 
 error_reporting(E_ALL);
-ini_set('display_errors', 'On');
+ini_set('display_errors', 'Off');
 
 $handleRequest = new \model\HandleRequest();
 

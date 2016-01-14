@@ -6,7 +6,7 @@ var map;
 function initMap() {
     
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 59.329333, lng: 18.068633},
+      center: {lat: 56.663593, lng: 16.355325},
       zoom: 8
     });
     
@@ -37,6 +37,8 @@ function getSCBCommunes() {
                     emptyErrorResults();
                     createErrorMessage("Fel när data skulle hämtas från servern");
                     var dropDownCommunes = document.getElementById("communes");
+                    var table = document.getElementById("tableForInformationAboutHousing");
+                    table.innerHTML = "";
                     dropDownCommunes.innerHTML = "";
                 }
             });
