@@ -1,7 +1,7 @@
 # Inledning
 
 [Körbar applikation](http://www.nexso-programmer.net)
-
+[Presentationsfilm](https://raw.githubusercontent.com/ss223ck/1dv449_ss223ck_projekt/master/Presentation.mp4)
 Jag har valt att göra en mashup-applikation som använder tre olika api:er. Jag använder google maps för att få en karta i min applikation. I kartan placerade jag information från boolis api. Boolis api ger information om bostäder som är till salu. Sista api:et som jag använde var SCB. Av scb tog jag information om län och kommuner för att presentera ett lätt sätt att söka på dessa. Av scb tog jag även statistik om olika typer av bostäder för att presenteras för varje kommun användaren sökt på. 
 ## Teknik
 Jag har använt mvc arkitektur när jag skrev applikationen.
